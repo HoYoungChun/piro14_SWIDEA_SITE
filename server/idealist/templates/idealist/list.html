@@ -37,12 +37,38 @@
                     </div>
                     <h2><a href="{% url 'ideas:detail' idea.id %}" style="color:black">{{ idea.title }}</a></h2>
                     <span>예상 개발 툴: {{ idea.devtool }}</span><br>
-                    <span>아이디어 관심도: {{ idea.interest }}</span>
-                    <button id="plus">+</button>
-                    <button id="minus">-</button>
+                    <span id="interest">아이디어 관심도: {{ idea.interest }}</span>
+                    <button type="button" onclick="plus({{ idea.id }});">+</button>
+                    <button type="button" onclick="minus({{ idea.id }});">-</button>
                 </div>
         {% endfor %}
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        function plus(id){ 
+            $.ajax({ 
+                    url:'/plus_interest/',
+                    type:"POST",
+                    data : { 'value' : id},
+                    success:function(response){
+                        $('#interest').html('아이디어 관심도: '+ response)
+                }
+            }) 
+        };
+        function minus(id){ 
+            $.ajax({ 
+                    url:'/minus_interest/',
+                    type:"POST",
+                    data : { 'value' : id},
+                    success:function(response){
+                        $('#interest').html('아이디어 관심도: '+ response)
+                }
+            }) 
+        };
+    </script>
+
+
 </body>
 </html>

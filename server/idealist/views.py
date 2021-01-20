@@ -3,6 +3,9 @@ from .models import Idea,DevTool
 from .forms import IdeaForm,DevToolForm,IdeaUpdate,ToolUpdate
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 # Create your views here.
 
@@ -122,3 +125,23 @@ def tool_update(request, tool_id):
     else:
         form = ToolUpdate(instance=tool)
         return render(request, 'idealist/tool_update.html', {'form':form})
+
+@csrf_exempt
+def plus_view(request):
+    value = request.POST.get("value")
+    idea = Idea.objects.get(id=str(value))
+    idea.interest+=1
+    idea.save()
+
+    resp=json.dumps(idea.interest)
+    return HttpResponse(resp, content_type="application/json")
+
+@csrf_exempt
+def minus_view(request):
+    value = request.POST.get("value")
+    idea = Idea.objects.get(id=str(value))
+    idea.interest-=1
+    idea.save()
+
+    resp=json.dumps(idea.interest)
+    return HttpResponse(resp, content_type="application/json")
