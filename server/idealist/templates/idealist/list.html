@@ -31,7 +31,7 @@
         {% for idea in ideas %}
                 <div class="one_idea" style="background-color: rgb(187, 255, 255);">
                     <div><img src = "{{ idea.image.url }}" alt="" height="100%"></div>
-                    <h2><a href="{% url 'ideas:detail' idea.id %}">{{ idea.title }}</a></h2>
+                    <h2><a href="{% url 'ideas:detail' idea.id %}" style="color:black">{{ idea.title }}</a></h2>
                     <span>예상 개발 툴: {{ idea.devtool }}</span><br>
                     <span>아이디어 관심도: {{ idea.interest }}</span>
                     <button id="plus">+</button>

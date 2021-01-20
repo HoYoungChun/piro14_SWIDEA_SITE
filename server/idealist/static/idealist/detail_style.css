@@ -62,16 +62,27 @@ a {
     align-items: center;
 }
 
-.ideas {
+.one_idea {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    padding: 20px;
-}
-
-.one_idea {
+    align-items: center;
     padding: 10px;
     margin: 10px;
     border-radius: 20px;
+    border: solid gray 1px;
+}
+
+.one_idea_detail {
+    color: #ffffff;
+}
+
+.buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    margin: 10px;
 }

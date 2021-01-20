@@ -27,7 +27,25 @@
             <span style="color:#FFFFFF">아이디어 세부내용 페이지 입니다. 당신이 구현하려 한 아이디어들을 자세히 살펴보세요.</span>
         </div>
         <hr width=100% color="#808080">
-        
+        <div class="one_idea">
+            <div class="one_idea_image">
+                <img src = "{{ idea.image.url }}" alt="" height="100%">
+            </div>
+            <div class="one_idea_detail">
+                <h2 style="color:#FF7F00"><u>{{idea.title}}</u></h2>
+                <p>1) 아이디어 관심도:</p>
+                <p><u>{{idea.interest}}</u></p>
+                <p>2) 예상 개발 툴:</p>
+                <p style="color:#FF7F00">{{idea.devtool}}</p>
+                <p>3) 아이디어 설명:</p>
+                <p><u>{{idea.content}}</u></p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button>삭제</button>
+            <button>목록</button>
+            <button>수정</button>
+        </div>
     </div>
 </body>
 </html>
