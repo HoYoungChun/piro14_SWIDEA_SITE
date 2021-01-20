@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" type="text/css" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'idealist/tool_list_style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{% url 'ideas:idealist' %}"><u>My SW Idea Manage</u></a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
+            <li><a href="{% url 'ideas:idealist' %}">아이디어 관리</a></li>
+            <li><a href="">개발툴 등록</a></li>
+            <li><a href="">개발툴 관리</a></li>
+        </ul>
+    </nav>
+
+    <div class="tool_content" style="background-color:black">
+        <div class="tool_title">
+            <h1 style="color:aquamarine">DevTool list</h1>
+            <span style="color:#FFFFFF">개발툴 목록 페이지 입니다. 자신이 사용가능한 개발툴의 목록을 확인해 보세요.</span>
+        </div>
+        <hr width=100% color="#808080">
+        <div class="tools">
+        {% for tool in tools %}
+                <div class="one_tool" style="background-color: rgb(187, 255, 255);">
+                    <h2>{{ tool.name }}</h2>
+                    <hr width=100% color="#FF7F00" style="height:3px">
+                    <span>{{ tool.kind }}</span><br>
+                    <p>{{ tool.description }}</p>
+                </div>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

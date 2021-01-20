@@ -1,5 +1,6 @@
 from django import forms
 from .models import Idea
+from .models import DevTool
 
 
 class IdeaForm(forms.ModelForm):
@@ -8,4 +9,9 @@ class IdeaForm(forms.ModelForm):
     # https://stackoverflow.com/questions/57241617/what-is-exactly-meta-in-django
     class Meta:
         model = Idea
+        fields = '__all__'
+
+class DevToolForm(forms.ModelForm):
+    class Meta:
+        model = DevTool
         fields = '__all__'

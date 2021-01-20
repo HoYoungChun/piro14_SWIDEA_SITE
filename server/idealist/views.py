@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Idea
-from .forms import IdeaForm
+from .models import Idea,DevTool
+from .forms import IdeaForm,DevToolForm
 
 # Create your views here.
 
@@ -39,3 +39,23 @@ def create_idea(request):
         form = IdeaForm()
         ctx = {'form': form}
         return render(request, template_name='idealist/idea_form.html', context=ctx)
+
+def devtool_list(request):
+    '''
+    Read(R)
+    아이디어들을 불러와서 리스트형태로 보여준다
+    '''
+    tools = DevTool.objects.all()  # 이 부분이 READ
+    ctx = {'tools': tools}
+    return render(request, template_name='idealist/tool_list.html', context=ctx)
+
+def create_tool(request):
+    if request.method == 'POST':
+        form = DevToolForm(request.POST, request.FILES)
+        if form.is_valid():
+            devtool = form.save()
+            return redirect('ideas:devtoollist')
+    else:
+        form = DevToolForm()
+        ctx = {'form': form}
+        return render(request, template_name='idealist/tool_form.html', context=ctx)

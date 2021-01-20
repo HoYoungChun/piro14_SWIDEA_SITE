@@ -10,3 +10,11 @@ class Idea(models.Model):
 
     def __str__(self):
         return self.title
+
+class DevTool(models.Model):
+    name=models.CharField(verbose_name='이름', max_length=100)
+    kind=models.CharField(verbose_name='종류', max_length=100)
+    description=models.TextField(verbose_name='개발툴 설명')
+
+    def __str__(self):
+        return self.name

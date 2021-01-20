@@ -15,20 +15,32 @@
         </div>
         <ul class="navbar_menu">
             <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
-            <li><a href="">아이디어 관리</a></li>
+            <li><a href="{% url 'ideas:idealist' %}">아이디어 관리</a></li>
             <li><a href="">개발툴 등록</a></li>
             <li><a href="">개발툴 관리</a></li>
         </ul>
     </nav>
     
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit" value="SUBMIT">
-    </form>
 
+    <div class="idea_content" style="background-color:black">
+        <div class="idea_title">
+            <h1 style="color:aquamarine">Idea Register</h1>
+            <span style="color:#FFFFFF">아이디어 등록 페이지입니다. 당신의 아이디어를 잊지 말고 기록하세요!</span>
+        </div>
+        <hr width=100% color="#808080">
+        <div class="inputs">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_title">>> 아이디어명:<br></label><input type="text" name="title" maxlength="100" required id="id_title"><br>
+                <label for="id_image">>> 대표 사진:<br></label><input type="file" name="image" accept="image/*" id="id_image"><br>
+                <label for="id_content">>> 아이디어 설명:<br></label><textarea name="content" cols="40" rows="10" required id="id_content"></textarea><br>
+                <label for="id_interest">>> 아이디어 관심도:<br></label><input type="number" name="interest" value="0" required id="id_interest"><br>
+                <label for="id_devtool">>> 예상 개발툴:<br></label><input type="text" name="devtool" maxlength="100" required id="id_devtool"><br>
+                
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
