@@ -95,3 +95,14 @@ def devtool_detail(request, tool_id):
     tool = DevTool.objects.get(id=tool_id)
     ctx = {'tool': tool}
     return render(request, template_name='idealist/tool_detail.html', context=ctx)
+
+
+def tool_delete(request, tool_id):
+    
+    tool = get_object_or_404(DevTool, pk=tool_id)
+
+    if request.method == "GET":
+        return redirect('ideas:devtooldetail', tool.id)
+    elif request.method == "POST":
+        tool.delete()
+        return redirect('ideas:devtoollist')

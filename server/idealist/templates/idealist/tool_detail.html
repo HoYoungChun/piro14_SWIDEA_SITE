@@ -43,7 +43,10 @@
             </div>
         </div>
         <div class="buttons">
-            <button>삭제</button>
+            <form action="{% url 'ideas:tool_delete' tool.id %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="삭제" style="cursor: pointer;">
+            </form>
             <a href="{% url 'ideas:devtoollist' %}"><button style="cursor: pointer;">목록</button></a>
             <button>수정</button>
         </div>
