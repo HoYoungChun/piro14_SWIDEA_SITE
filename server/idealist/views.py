@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Idea,DevTool
-from .forms import IdeaForm,DevToolForm,IdeaUpdate
+from .forms import IdeaForm,DevToolForm,IdeaUpdate,ToolUpdate
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
 
@@ -106,3 +106,19 @@ def tool_delete(request, tool_id):
     elif request.method == "POST":
         tool.delete()
         return redirect('ideas:devtoollist')
+        
+
+def tool_update(request, tool_id):
+    tool = DevTool.objects.get(id=tool_id)
+
+    if request.method == 'POST':
+        form = ToolUpdate(request.POST, request.FILES)
+        if form.is_valid():
+            tool.name=form.cleaned_data['name']
+            tool.kind=form.cleaned_data['kind']
+            tool.description=form.cleaned_data['description']
+            tool.save()
+            return redirect('ideas:devtoollist')
+    else:
+        form = ToolUpdate(instance=tool)
+        return render(request, 'idealist/tool_update.html', {'form':form})

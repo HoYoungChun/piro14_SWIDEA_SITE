@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'idealist/form_style.css' %}">
+    <title>개발툴 수정</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{% url 'ideas:idealist' %}"><u>My SW Idea Manage</u></a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
+            <li><a href="{% url 'ideas:idealist' %}">아이디어 관리</a></li>
+            <li><a href="{% url 'ideas:create_tool' %}">개발툴 등록</a></li>
+            <li><a href="{% url 'ideas:devtoollist' %}">개발툴 관리</a></li>
+        </ul>
+    </nav>
+    
+
+    <div class="idea_content" style="background-color:black">
+        <div class="idea_title">
+            <h1 style="color:aquamarine">DevTool Detail Update</h1>
+            <span style="color:#FFFFFF">개발툴 세부내용 수정 페이지 입니다. 개발툴에 대해 수정사항이 있으면 고쳐보아요.</span>
+        </div>
+        <hr width=100% color="#808080">
+        <div class="inputs">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type="submit" value="SUBMIT">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

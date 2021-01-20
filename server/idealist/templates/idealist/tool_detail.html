@@ -48,7 +48,7 @@
                 <input type="submit" value="삭제" style="cursor: pointer;">
             </form>
             <a href="{% url 'ideas:devtoollist' %}"><button style="cursor: pointer;">목록</button></a>
-            <button>수정</button>
+            <a href="{% url 'ideas:tool_update' tool.id %}"><button style="cursor: pointer;">수정</button></a>
         </div>
     </div>
 </body>

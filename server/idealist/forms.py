@@ -20,3 +20,8 @@ class IdeaUpdate(forms.ModelForm):
     class Meta:
         model = Idea
         fields = '__all__'
+
+class ToolUpdate(forms.ModelForm):
+    class Meta:
+        model = DevTool
+        fields = '__all__'
