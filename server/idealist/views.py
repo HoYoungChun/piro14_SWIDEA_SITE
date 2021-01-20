@@ -59,6 +59,18 @@ def idea_update(request, idea_id):
         form = IdeaUpdate(instance=idea)
         return render(request, 'idealist/idea_update.html', {'form':form})
 
+
+def idea_delete(request, idea_id):
+    
+    idea = get_object_or_404(Idea, pk=idea_id)
+
+    if request.method == "GET":
+        return redirect('ideas:detail', idea.id)
+    elif request.method == "POST":
+        idea.delete()
+        return redirect('ideas:idealist')
+
+
 def devtool_list(request):
     '''
     Read(R)
