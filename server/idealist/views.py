@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Idea,DevTool
-from .forms import IdeaForm,DevToolForm
+from .forms import IdeaForm,DevToolForm,IdeaUpdate
+from django.views.generic.edit import UpdateView
 
 # Create your views here.
 
@@ -39,6 +40,23 @@ def create_idea(request):
         form = IdeaForm()
         ctx = {'form': form}
         return render(request, template_name='idealist/idea_form.html', context=ctx)
+
+def idea_update(request, idea_id):
+    idea = Idea.objects.get(id=idea_id)
+
+    if request.method == 'POST':
+        form = IdeaUpdate(request.POST, request.FILES)
+        if form.is_valid():
+            idea.title=form.cleaned_data['title']
+            idea.image=form.cleaned_data['image']
+            idea.content=form.cleaned_data['content']
+            idea.interest=form.cleaned_data['interest']
+            idea.devtool=form.cleaned_data['devtool']
+            idea.save()
+            return redirect('ideas:idealist')
+    else:
+        form = IdeaUpdate(instance=idea)
+        return render(request, 'idealist/idea_update.html', {'form':form})
 
 def devtool_list(request):
     '''
