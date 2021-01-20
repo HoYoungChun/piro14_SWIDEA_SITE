@@ -6,4 +6,5 @@ app_name = 'ideas'
 urlpatterns = [
     path('', view=views.idea_list, name='idealist'),
     path('idea/<int:idea_id>/', view=views.idea_detail, name='detail'),
+    path('idea/create/', view=views.create_idea, name='create'),
 ]

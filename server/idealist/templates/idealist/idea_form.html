@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'idealist/form_style.css' %}">
+    <title>아이디어 등록</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{% url 'ideas:idealist' %}"><u>My SW Idea Manage</u></a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
+            <li><a href="">아이디어 관리</a></li>
+            <li><a href="">개발툴 등록</a></li>
+            <li><a href="">개발툴 관리</a></li>
+        </ul>
+    </nav>
+    
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="SUBMIT">
+    </form>
+
+</body>
+
+</html>

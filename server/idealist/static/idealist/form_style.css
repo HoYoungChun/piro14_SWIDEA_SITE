@@ -44,36 +44,3 @@ a {
     background-color: #d49466;
     border-radius: 4px;
 }
-
-.idea_content {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #263343;
-    padding: 8px 12px;
-}
-
-.idea_title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ideas {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.one_idea {
-    padding: 10px;
-    margin: 10px;
-    margin-bottom: 50px;
-    border-radius: 20px;
-}

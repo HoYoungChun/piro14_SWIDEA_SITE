@@ -23,3 +23,19 @@ def idea_detail(request, idea_id):
     ctx = {'idea': idea}
 
     return render(request, template_name='idealist/detail.html', context=ctx)
+
+def create_idea(request):
+    '''
+    Create(C)
+    포스트를 새로 생성한다
+    request method ==> GET(url입력), POST(저장하기) 생활코딩 보기
+    '''
+    if request.method == 'POST':
+        form = IdeaForm(request.POST, request.FILES)
+        if form.is_valid():
+            idea = form.save()
+            return redirect('ideas:idealist')
+    else:
+        form = IdeaForm()
+        ctx = {'form': form}
+        return render(request, template_name='idealist/idea_form.html', context=ctx)
