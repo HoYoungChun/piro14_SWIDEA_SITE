@@ -13,3 +13,13 @@ def idea_list(request):
     ideas = Idea.objects.all()  # 이 부분이 READ
     ctx = {'ideas': ideas}
     return render(request, template_name='idealist/list.html', context=ctx)
+
+def idea_detail(request, idea_id):
+    '''
+    Read(R)
+    특정 아이디어를 불러와서 상세정보를 보여준다
+    '''
+    idea = Idea.objects.get(id=idea_id)
+    ctx = {'idea': idea}
+
+    return render(request, template_name='idealist/detail.html', context=ctx)
