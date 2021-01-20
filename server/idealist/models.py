@@ -14,7 +14,7 @@ class Idea(models.Model):
     image = models.ImageField(verbose_name='대표 사진', blank=True, null=True)
     content = models.TextField(verbose_name='아이디어 설명')
     interest = models.IntegerField(verbose_name='아이디어 관심도', default=0)
-    devtool = models.ForeignKey(DevTool, verbose_name='예상 개발툴', on_delete=models.CASCADE)
+    devtool = models.ForeignKey(DevTool, related_name='devtool', verbose_name='예상 개발툴', on_delete=models.CASCADE )
 
     def __str__(self):
         return self.title

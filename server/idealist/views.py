@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Idea,DevTool
 from .forms import IdeaForm,DevToolForm,IdeaUpdate
 from django.views.generic.edit import UpdateView
+from django.urls import reverse
 
 # Create your views here.
 
@@ -77,3 +78,8 @@ def create_tool(request):
         form = DevToolForm()
         ctx = {'form': form}
         return render(request, template_name='idealist/tool_form.html', context=ctx)
+
+def devtool_detail(request, tool_id):
+    tool = DevTool.objects.get(id=tool_id)
+    ctx = {'tool': tool}
+    return render(request, template_name='idealist/tool_detail.html', context=ctx)

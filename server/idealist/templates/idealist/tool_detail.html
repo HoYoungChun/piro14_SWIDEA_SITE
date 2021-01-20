@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'idealist/tool_detail.css' %}">
+    <title>개발툴 디테일</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{% url 'ideas:idealist' %}"><u>My SW Idea Manage</u></a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
+            <li><a href="{% url 'ideas:idealist' %}">아이디어 관리</a></li>
+            <li><a href="{% url 'ideas:create_tool' %}">개발툴 등록</a></li>
+            <li><a href="{% url 'ideas:devtoollist' %}">개발툴 관리</a></li>
+        </ul>
+    </nav>
+
+    <div class="tool_content" style="background-color:black">
+        <div class="tool_title">
+            <h1 style="color:aquamarine">DevTool Detail</h1>
+            <span style="color:#FFFFFF">개발들 세부내용 페이지 입니다. 자신이 다룰 수 있는 개발툴에 대한 상세내용을 확인해 보아요.</span>
+        </div>
+        <div class="one_tool">
+            <div class="one_tool_content">
+                <h1 style="color:#FF7F00">{{tool.name}}</h1>
+                <span>{{tool.kind}}</span><br>
+                <span>{{tool.description}}</span>
+            </div>
+            
+            <hr width=100% color="#808080" style="margin: 20px 0px">
+            
+            <div class="one_tool_foreign">
+                <span style="color:#FF7F00">> 만들 수 있는 SW 목록</span><br>
+                {% for idea in tool.devtool.all %}
+                    {{idea.title}}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="buttons">
+            <button>삭제</button>
+            <a href="{% url 'ideas:devtoollist' %}"><button style="cursor: pointer;">목록</button></a>
+            <button>수정</button>
+        </div>
+    </div>
+</body>
+</html>

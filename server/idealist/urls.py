@@ -10,4 +10,5 @@ urlpatterns = [
     path('idea/update/<int:idea_id>/', view=views.idea_update, name='update'),
     path('devtool/create/', view=views.create_tool, name='create_tool'),
     path('devtool/', view=views.devtool_list, name='devtoollist'),
+    path('devtool/<int:tool_id>/', view=views.devtool_detail, name='devtooldetail'),
 ]
