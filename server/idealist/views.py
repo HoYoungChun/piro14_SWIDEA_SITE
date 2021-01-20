@@ -36,7 +36,7 @@ def create_idea(request):
         form = IdeaForm(request.POST, request.FILES)
         if form.is_valid():
             idea = form.save()
-            return redirect('ideas:idealist')
+            return redirect('ideas:detail', idea.id)
     else:
         form = IdeaForm()
         ctx = {'form': form}
@@ -54,7 +54,7 @@ def idea_update(request, idea_id):
             idea.interest=form.cleaned_data['interest']
             idea.devtool=form.cleaned_data['devtool']
             idea.save()
-            return redirect('ideas:idealist')
+            return redirect('ideas:detail', idea.id)
     else:
         form = IdeaUpdate(instance=idea)
         return render(request, 'idealist/idea_update.html', {'form':form})
@@ -85,7 +85,7 @@ def create_tool(request):
         form = DevToolForm(request.POST, request.FILES)
         if form.is_valid():
             devtool = form.save()
-            return redirect('ideas:devtoollist')
+            return redirect('ideas:devtooldetail', devtool.id)
     else:
         form = DevToolForm()
         ctx = {'form': form}
@@ -118,7 +118,7 @@ def tool_update(request, tool_id):
             tool.kind=form.cleaned_data['kind']
             tool.description=form.cleaned_data['description']
             tool.save()
-            return redirect('ideas:devtoollist')
+            return redirect('ideas:devtooldetail', tool.id)
     else:
         form = ToolUpdate(instance=tool)
         return render(request, 'idealist/tool_update.html', {'form':form})
