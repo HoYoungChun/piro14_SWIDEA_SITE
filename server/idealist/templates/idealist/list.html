@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Idea list</h1>
+    <p>나의 아이디어를 잊지 말고 기록해보세요</p>
+    {% for idea in ideas %}
+        <img src = "{{ idea.image.url }}" alt="" height="300">
+        <h2>{{ idea.title }}</h2>
+        <span>예상 개발 툴: {{ idea.devtool }}</span><br>
+        <span>아이디어 관심도: {{ idea.interest }}</span>
+        <button id="plus">+</button>
+        <button id="minus">-</button>
+    {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+</body>
+</html>
