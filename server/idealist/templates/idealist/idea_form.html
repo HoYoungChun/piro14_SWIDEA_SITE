@@ -16,8 +16,8 @@
         <ul class="navbar_menu">
             <li><a href="{% url 'ideas:create' %}">아이디어 등록</a></li>
             <li><a href="{% url 'ideas:idealist' %}">아이디어 관리</a></li>
-            <li><a href="">개발툴 등록</a></li>
-            <li><a href="">개발툴 관리</a></li>
+            <li><a href="{% url 'ideas:create_tool' %}">개발툴 등록</a></li>
+            <li><a href="{% url 'ideas:devtoollist' %}">개발툴 관리</a></li>
         </ul>
     </nav>
     
